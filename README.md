@@ -82,4 +82,4 @@ This app requires root access and modifies system partitions. Use at your own ri
 For issues, feature requests, or questions, please open an issue in this repository.
 
 ## Credits
-Developed by Ingsha Sawaden/ingsha09
+Developed by Ingsha Sawaden/ingsha09👾
