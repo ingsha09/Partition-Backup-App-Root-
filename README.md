@@ -56,7 +56,29 @@ The app utilizes root access to directly read from and write to partition blocks
 
 ## Compatibility
 The app is designed to work with most rooted Android devices. It includes multiple partition paths for various device configurations:
-```bash
 /dev/block/bootdevice/by-name/
 /dev/block/platform/*/by-name/
 /dev/block/by-name/
+
+
+## Technical Details
+- Backups are stored in `/sdcard/PartitionBackups/[PartitionName]/`
+- Filename format: `[TIMESTAMP]_[partition].img`
+- Uses direct block-level operations via `dd` command
+- Implements fallback methods for different device configurations
+- Handles both MTD and eMMC devices
+
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT License]
+
+## Disclaimer
+This app requires root access and modifies system partitions. Use at your own risk. Always maintain proper backups before using this tool.
+
+## Support
+For issues, feature requests, or questions, please open an issue in this repository.
+
+## Credits
+Developed by Ingsha Sawaden/ingsha09
