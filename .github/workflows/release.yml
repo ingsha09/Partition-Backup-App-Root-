@@ -1,4 +1,4 @@
-name: Release Workflow
+name: Build APK
 
    on:
      push:
@@ -8,40 +8,34 @@ name: Release Workflow
    jobs:
      build:
        runs-on: ubuntu-latest
+
        steps:
          - name: Checkout code
            uses: actions/checkout@v2
 
-         - name: Set up Node.js
-           uses: actions/setup-node@v2
+         - name: Set up JDK 17
+           uses: actions/setup-java@v2
            with:
-             node-version: '14'
+             java-version: '17'
+             distribution: 'temurin'
 
-         - name: Install dependencies
-           run: npm install
+         - name: Grant execute permission for gradlew
+           run: chmod +x ./gradlew
 
-         - name: Compile the app
-           run: npm run buildname: Release
+         - name: Build Debug APK
+           run: ./gradlew assembleDebug
 
-   on:
-     push:
-       branches:
-         - main
+         - name: Build Release APK
+           run: ./gradlew assembleRelease
 
-   jobs:
-     build:
-       runs-on: ubuntu-latest
-       steps:
-         - name: Checkout code
-           uses: actions/checkout@v2
-
-         - name: Set up Node.js
-           uses: actions/setup-node@v2
+         - name: Upload Debug APK
+           uses: actions/upload-artifact@v2
            with:
-             node-version: '14'  # or your required version
+             name: app-debug.apk
+             path: app/build/outputs/apk/debug/app-debug.apk
 
-         - name: Install dependencies
-           run: npm install
-
-         - name: Build the app
-           run: npm run build  # or your build command
+         - name: Upload Release APK
+           uses: actions/upload-artifact@v2
+           with:
+             name: app-release.apk
+             path: app/build/outputs/apk/release/app-release.apk
