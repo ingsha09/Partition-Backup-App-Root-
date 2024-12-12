@@ -1,6 +1,6 @@
 # Partition Backup
 A robust Android application for backing up and restoring critical system partitions directly from your device without needing to boot into recovery mode.
-
+![Alt text](Screenshots/Screenshot_20241213-012414.png)
 ## Features
 - Direct backup and restore of system partitions while in Android
 - Supports critical partitions:
@@ -8,6 +8,7 @@ A robust Android application for backing up and restoring critical system partit
   - Recovery (custom recovery partition)
   - EFS (IMEI and network data)
   - Modem (Radio/baseband firmware)
+![Screenshot of my project](Screenshots/Screenshot_20241213-012422.png)
 - Automatic timestamp-based backup naming
 - Simple, user-friendly interface
 - No recovery mode required
@@ -21,7 +22,7 @@ The app utilizes root access to directly read from and write to partition blocks
 - Bit-perfect backups of system partitions
 - Safe restoration process with verification
 - Multiple backup paths support for different device configurations
-
+![Screenshot of my project](Screenshots/Screenshot_20241213-012432.png)
 ## Requirements
 - Rooted Android device
 - Android 6.0 (Marshmallow) or higher
