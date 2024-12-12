@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+with:
+        node-version: '14'  # Specify your Node.js version
+
+    - name: Install dependencies
+      run: npm install  # Change this to your build command if necessary
+
+    - name: Build the application
+      run: npm run build  # Change this to your build command if necessary
+
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.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 }}
